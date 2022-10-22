@@ -1,8 +1,20 @@
+/**
+ * @file p1.cpp
+ * @author Alejandro Torrejon Harto (atorrjo@alumnos.unex.es)
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-22
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "pila_acotada.h"
 #include <stdio.h>
 
 #define REPETICIONES 50
 #define NUM_HILOS 5
+
 
 void imprimir_lectura(int hilo, int elem){
 	printf("El hilo %d ha leído el valor %d de la pila\n", hilo, elem);
@@ -26,47 +38,50 @@ typedef struct
 }DatosHilos_t;
 
 
-//Definir la función hilo_productor para la creación de hilos productores siguiendo el formato específico de este tipo de funciones (ver apuntes del tema 2 o el anexo de la práctica 1)
+/**
+ * @brief Función para hilo, añade un numero si la pila no esta llena
+ * 
+ * @param data DatosHilos_t, pila e hilo
+ * @return void* 
+ */
 void * hilo_productor(void *data)
 {
-//El parámetro es un dato de tipo TDato
-DatosHilos_t productor=*((DatosHilos_t *)data);
-	//Definir una variable de tipo DatosHilos_t
-	//Asignar el contenido del parámetro de entrada a la variable anterior siguiento la forma indicada en clase (ver apuntes del tema 2 o el anexo de la práctica 1)
-
-	/*
-	Llamar REPETICIONES veces al método PilaAniadir del campo relativo a la pila acotada mostrando un mensaje con el número que se introducirá y el identificador del hilo
-	Como en la estructura DatosHilos_t los campos son punteros, para usar sus métodos usaremos '->' en lugar de '.'
-	*/
+	//El parámetro es un dato de tipo DatosHilos_t
+	DatosHilos_t productor=*((DatosHilos_t *)data);
+	int valEsc;
 	for (int i=0; i<REPETICIONES; i++) {
-		productor.Pila->PilaAniadir(productor.Identificador->ObtenerIdentificador()*i);
-		imprimir_escritura(productor.Identificador->ObtenerIdentificador(), productor.Identificador->ObtenerIdentificador()*i);
+		valEsc = (productor.Identificador->ObtenerIdentificador()*i)+productor.Identificador->ObtenerIdentificador();
+		productor.Pila->PilaAniadir(valEsc);
+		imprimir_escritura(productor.Identificador->ObtenerIdentificador(), valEsc);
 	}
-
+	return nullptr;
 }
-//Fin hilo_productor
 
 
-//Definir la función hilo_consumidor para la creación de hilos consumidores siguiendo el formato específico de este tipo de funciones (ver apuntes del tema 2 o el anexo de la práctica 1)
+/**
+ * @brief Función para hilo, extrae un numero si la pila no esta vacía
+ * 
+ * @param data DatosHilos_t, pila e hilo
+ * @return void* 
+ */
 void * hilo_consumidor(void *data)
 {
 	//Definir una variable de tipo DatosHilos_t
-
-	//Asignar el contenido del parámetro de entrada a la variable anterior siguiento la forma indicada en clase (ver apuntes del tema 2 o el anexo de la práctica 1)
 	DatosHilos_t consumidor=*((DatosHilos_t *)data);
-	/*
-	Llamar REPETICIONES veces al método PilaSacar del campo relativo a la pila acotada mostrando un mensaje con el número leído y el identificador del hilo
-	Como en la estructura DatosHilos_t los campos son punteros, para usar sus métodos usaremos '->' en lugar de '.'
-	*/
     int valLec;
 	for (int i=0; i<REPETICIONES; i++) {
 		valLec = consumidor.Pila->PilaSacar();
 		imprimir_lectura(consumidor.Identificador->ObtenerIdentificador(), valLec);
 	}
+	return nullptr;
 }
-//Fin hilo_consumidor
 
 
+/**
+ * @brief Se arrancara NUM_HILOS de hilos productores, que añadirán a la pila y la misma cantidad de consumidores, que extraerán de esta
+ * 
+ * @return int 
+ */
 int main (void) {
 	//Definir una variable PilaAcotada inicializándola a 20
 	PilaAcotada pila(20);
@@ -79,9 +94,7 @@ int main (void) {
 	hilo_t hilosProductores[NUM_HILOS];
 	hilo_t hilosConsumidores[NUM_HILOS];
 
-	/*
-	Lanzar los NUM_HILOS productores y consumidores. Para lanzar cada hilo, hay que hacer los siguientes pasos:
-	*/
+	//Lanzar los NUM_HILOS productores y consumidores. Para lanzar cada hilo, hay que hacer los siguientes pasos:
 	for (int i=0; i<NUM_HILOS; i++) {
 		
 		//1. Asignar al campo Hilo del productor/consumidor i-ésimo la dirección de memoria del valor i-ésimo del vector de manejadores de productores/consumidores según corresponda
