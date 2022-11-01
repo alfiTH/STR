@@ -29,18 +29,6 @@ void * HiloEnBarrera(void *data)
 	imprimir_bloqueo(dataHilo.Identificador->ObtenerIdentificador());
 	dataHilo.Barrel->Sincronizar();
 	imprimir_desbloqueo(dataHilo.Identificador->ObtenerIdentificador());
-	
-	//Definir una variable de tipo DatosHilos_t
-	
-	//Asignar el contenido del parámetro de entrada a la variable anterior siguiento la forma indicada en clase (ver apuntes del tema 2 o el anexo de la práctica)
-	
-	//Mostrar un mensaje indicando que el hilo se bloquea en la barrera
-	
-	//Bloquearse en la barrera
-	
-	//Mostrar un mensaje indicando que el hilo sale de la barrera
-	
-//Fin de la función HiloEnBarrera
 	return nullptr;
 }
 

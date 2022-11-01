@@ -16,10 +16,15 @@ void * HiloSigInt( void * data)
 	int maxSig = *((int *)data);
 	int sig;
 	int counter = 0;
+	//Crear un conjunto de señales
 	sigset_t set;
+		//Inicializar el conjunto de señales a vacío
 	sigemptyset(&set);
+	//Añadir SIGINT al conjunto de señales
 	sigaddset(&set, SIGINT);
+	//Añadir el conjunto de señales a la máscara de señales bloqueadas
 	pthread_sigmask(SIG_BLOCK, &set, NULL);
+	//Mientras no se hayan capturado las señales esperadas
 	while (counter < maxSig)
 	{
 		if (sigwait(&set, &sig)!= 0)pthread_exit((void*)-1);
@@ -29,35 +34,9 @@ void * HiloSigInt( void * data)
 			senial_capturada(counter, maxSig);
 		}
 	}
-	
-	
-
-
-
+	return nullptr;
 }
-	//Definir una variable de tipo entero para almacenar el número de señales a capturar
-	
-	//Asignar el contenido del parámetro de entrada a la variable anterior siguiento la forma indicada en clase (ver apuntes del tema 2 o el anexo de la práctica)
-	
-	//Definir una variable para almacenar el número de señales capturadas
-	
-	//Crear un conjunto de señales
-	
-	//Inicializar el conjunto de señales a vacío
-	
-	//Añadir SIGINT al conjunto de señales
-	
-	//Añadir el conjunto de señales a la máscara de señales bloqueadas
-	
-	//Mientras no se hayan capturado las señales esperadas
-	
-		//Esperar por el conjunto de señales, que solamente contiene SIGINT (habrá que crear una variable para usarla como segundo parámetro de la función sigwait)
-				
-		//Incrementar el número de señales capturadas
-		
-		//Mostrar un mensaje indicando cuántas señales se han capturado y cuántas se espera capturar
-		
-//Fin de la función HiloSigInt
+
 
 
 int main (int argc, char *argv[]) {
