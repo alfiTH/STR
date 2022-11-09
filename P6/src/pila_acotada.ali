@@ -1,0 +1,94 @@
+V "GNAT Lib v12"
+P ZX
+
+RN
+RV SIMPLE_BARRIERS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_PROTECTED_TYPES
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV MAX_PROTECTED_ENTRIES=2
+
+U pila_acotada%b	pila_acotada.adb	e436f2fe NE OO PK IL
+Z system%s		system.ads		system.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+Z system.tasking.protected_objects.entries%s  s-tpoben.adb  s-tpoben.ali
+Z system.tasking.protected_objects.operations%s  s-tpobop.adb  s-tpobop.ali
+
+U pila_acotada%s	pila_acotada.ads	bce1ecc5 EE NE OO PK IL
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z system%s		system.ads		system.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+Z system.tasking.protected_objects.entries%s  s-tpoben.adb  s-tpoben.ali
+
+D ada.ads		20220506073056 76789da1 ada%s
+D a-except.ads		20220506073056 2a7d8d70 ada.exceptions%s
+D a-finali.ads		20220506073056 bf4f806b ada.finalization%s
+D a-stream.ads		20220506073056 119b8fb3 ada.streams%s
+D a-string.ads		20220506073056 90ac6797 ada.strings%s
+D a-sttebu.ads		20220506073056 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20220506073056 33c54060 ada.strings.utf_encoding%s
+D a-tags.ads		20220506073056 9eaa38c6 ada.tags%s
+D a-unccon.ads		20220506073056 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20220506073056 edec285f interfaces%s
+D i-c.ads		20220506073056 2284bf7c interfaces.c%s
+D pila_acotada.ads	20221109170322 bce1ecc5 pila_acotada%s
+D pila_acotada.adb	20221109170433 58d71e3b pila_acotada%b
+D system.ads		20220506073056 a2da961d system%s
+D s-atacco.ads		20220506073056 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20220506073056 91bef6ef system.exception_table%s
+D s-finroo.ads		20220506073056 4ff27390 system.finalization_root%s
+D s-linux.ads		20220506073056 34850a8c system.linux%s
+D s-multip.ads		20220506073056 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20220513111155 89271e13 system.os_constants%s
+D s-osinte.ads		20220506073056 e4f53740 system.os_interface%s
+D s-parame.ads		20220506073056 d494a4a6 system.parameters%s
+D s-putima.ads		20220506073056 4e095881 system.put_images%s
+D s-secsta.ads		20220506073056 62cd9202 system.secondary_stack%s
+D s-soflin.ads		20220506073056 df77073e system.soft_links%s
+D s-stache.ads		20220506073056 0b81c1fe system.stack_checking%s
+D s-stausa.ads		20220506073056 5be75682 system.stack_usage%s
+D s-stalib.ads		20220506073056 1c9580f6 system.standard_library%s
+D s-stoele.ads		20220506073056 6d8e1ff4 system.storage_elements%s
+D s-stoele.adb		20220506073056 8f5a9db6 system.storage_elements%b
+D s-tasinf.ads		20220506073056 528dde74 system.task_info%s
+D s-taspri.ads		20220506073056 4ec891e7 system.task_primitives%s
+D s-taskin.ads		20220506073056 0ec7ab0b system.tasking%s
+D s-taprob.ads		20220506073056 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20220506073056 60ad3dae system.tasking.protected_objects.entries%s
+D s-tpobop.ads		20220506073056 5f548bb3 system.tasking.protected_objects.operations%s
+D s-traent.ads		20220506073056 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20220506073056 fa2a7f59 system.unsigned_types%s
+D unchconv.ads		20220506073056 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z s b [pilaaniadir pila_acotada__pilaacotada 8 13 none]
+G c Z s b [pilasacar pila_acotada__pilaacotada 11 13 none]
+G c Z s s [vectorenteroIP pila_acotada 4 9 none]
+G c Z s s [pilaacotadaVDI pila_acotada 6 4 none]
+G c Z s s [pilaacotadaVDF pila_acotada 6 4 none]
+G c Z s s [pilaacotadaVIP pila_acotada 6 4 none]
+G c Z s s [P4sIP pila_acotada 8 7 none]
+G c Z s s [P7sIP pila_acotada 11 7 none]
+X 12 pila_acotada.ads
+2K9*pila_acotada 25l5 25e17 13|2b14 33l5 33t17
+4A9*VectorEntero(integer)<integer> 21r13
+6W19*PilaAcotada 6d32 15E7 23l11 23e22 13|4b19 31l8 31t19
+6i32 T{positive} 15r31 21r29
+8Y13 PilaAniadir 8>25 13|6b13 16l14 16t25
+8i25 Item{integer} 13|14r22
+11Y13 PilaSacar 11<24 13|19b13 29l11 29t20
+11i24 Item{integer} 13|25m10
+15i7 Tamanio_Pila{positive} 13|8r22
+19i7 cima{natural} 13|8r15 12r10 12r17 14r15 21r12 25r21 27r10 27r16
+21a7 Pila{4A9} 13|14r10 25r16
+X 13 pila_acotada.adb
+6i25 Item{integer}
+19i23 Item{integer}
+X 27 s-stausa.ads
+207U14*Initialize 208i<c,__gnat_stack_usage_initialize>22
+272U14*Output_Results 276i<c,__gnat_stack_usage_output_results>22
+

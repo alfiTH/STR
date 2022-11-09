@@ -1,0 +1,138 @@
+V "GNAT Lib v12"
+M P W=b
+P SS ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_LOCAL_PROTECTED_OBJECTS
+RV NO_NESTED_FINALIZATION
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV MAX_TASKS=1+
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U p1%b			p1.adb			dab7a262 NE OO SU IL
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.real_time%s	a-reatim.adb		a-reatim.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.io%s		g-io.adb		g-io.ali
+W pila_acotada%s	pila_acotada.adb	pila_acotada.ali
+Z system%s		system.ads		system.ali
+Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+Z system.img_int%s	s-imgint.ads		s-imgint.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+Z system.tasking.protected_objects.operations%s  s-tpobop.adb  s-tpobop.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20220506073056 76789da1 ada%s
+D a-except.ads		20220506073056 2a7d8d70 ada.exceptions%s
+D a-finali.ads		20220506073056 bf4f806b ada.finalization%s
+D a-reatim.ads		20220506073056 0240fc73 ada.real_time%s
+D a-stream.ads		20220506073056 119b8fb3 ada.streams%s
+D a-string.ads		20220506073056 90ac6797 ada.strings%s
+D a-sttebu.ads		20220506073056 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20220506073056 33c54060 ada.strings.utf_encoding%s
+D a-tags.ads		20220506073056 9eaa38c6 ada.tags%s
+D a-unccon.ads		20220506073056 0e9b276f ada.unchecked_conversion%s
+D gnat.ads		20220506073056 b5988c27 gnat%s
+D g-io.ads		20220506073056 9f0d3ab2 gnat.io%s
+D interfac.ads		20220506073056 edec285f interfaces%s
+D i-c.ads		20220506073056 2284bf7c interfaces.c%s
+D p1.adb		20221109173514 f95b7415 p1%b
+D pila_acotada.ads	20221109170322 bce1ecc5 pila_acotada%s
+D system.ads		20220506073056 a2da961d system%s
+D s-atacco.ads		20220506073056 4c36d12f system.address_to_access_conversions%s
+D s-conca3.ads		20220506073056 9078e860 system.concat_3%s
+D s-exctab.ads		20220506073056 91bef6ef system.exception_table%s
+D s-finmas.ads		20220506073056 bd688734 system.finalization_masters%s
+D s-finroo.ads		20220506073056 4ff27390 system.finalization_root%s
+D s-imagei.ads		20220506073056 0d3f86a7 system.image_i%s
+D s-imgint.ads		20220506073056 bdb6f5ec system.img_int%s
+D s-linux.ads		20220506073056 34850a8c system.linux%s
+D s-memory.ads		20220506073056 5b8432d0 system.memory%s
+D s-multip.ads		20220506073056 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20220513111155 89271e13 system.os_constants%s
+D s-osinte.ads		20220506073056 e4f53740 system.os_interface%s
+D s-parame.ads		20220506073056 d494a4a6 system.parameters%s
+D s-pooglo.ads		20220506073056 91708d21 system.pool_global%s
+D s-putima.ads		20220506073056 4e095881 system.put_images%s
+D s-secsta.ads		20220506073056 62cd9202 system.secondary_stack%s
+D s-soflin.ads		20220506073056 df77073e system.soft_links%s
+D s-stache.ads		20220506073056 0b81c1fe system.stack_checking%s
+D s-stausa.ads		20220506073056 5be75682 system.stack_usage%s
+D s-stalib.ads		20220506073056 1c9580f6 system.standard_library%s
+D s-stalib.adb		20220506073056 eb464a47 system.standard_library%b
+D s-stoele.ads		20220506073056 6d8e1ff4 system.storage_elements%s
+D s-stoele.adb		20220506073056 8f5a9db6 system.storage_elements%b
+D s-stopoo.ads		20220506073056 e9fa2dd8 system.storage_pools%s
+D s-tasinf.ads		20220506073056 528dde74 system.task_info%s
+D s-taspri.ads		20220506073056 4ec891e7 system.task_primitives%s
+D s-taprop.ads		20220506073056 6eefbe12 system.task_primitives.operations%s
+D s-taskin.ads		20220506073056 0ec7ab0b system.tasking%s
+D s-taprob.ads		20220506073056 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20220506073056 60ad3dae system.tasking.protected_objects.entries%s
+D s-tpobop.ads		20220506073056 5f548bb3 system.tasking.protected_objects.operations%s
+D s-tassta.ads		20220506073056 cca55c94 system.tasking.stages%s
+D s-traent.ads		20220506073056 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20220506073056 fa2a7f59 system.unsigned_types%s
+D unchconv.ads		20220506073056 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z b b [p1 standard 5 11 none]
+G r s pilaacotada [p1 standard 5 11 none] [pilaacotadaVIP pila_acotada 6 4 none]
+G r o none [p1 standard 5 11 none] [pilaaniadir pila_acotada__pilaacotada 8 13 none]
+G r o none [p1 standard 5 11 none] [pilasacar pila_acotada__pilaacotada 11 13 none]
+X 11 gnat.ads
+37K9*GNAT 60e9 15|1r6 1r19
+X 12 g-io.ads
+41K14*IO 91e12 15|1w11 1r24
+72U14*Put_Line 15|10s7 14s7
+X 15 p1.adb
+5U11*p1 5b11 63l5 63t7
+6i4 NUM_HILOS{integer} 58r22 60r21
+7i4 REPETICIONES{integer} 28r21 47r21
+9U14 imprimir_escritura 9b14 9>33 11l8 11t26 32s10
+9i33 dato{integer} 10r59
+13U14 imprimir_lectura 13b14 13>31 15l8 15t24 51s10
+13i31 dato{integer} 14r57
+18w4 Pila{16|6W19} 58m49 58r49 60m49 60r49
+20P9 PPila_Acotada_t(16|6W19) 22r29 39r30
+22T14 TProductor 22d25 24b14 36l8 36t18 58r36
+22p25 P{20P9} 30r10
+28i11 i{integer} 30r24 32r29
+39T14 TConsumidor 39d26 41b14 55l8 55t19 60r35
+39p26 P{20P9} 49r10
+43i7 val{integer} 49m22 51r27
+47i11 i{integer}
+58a4 Prods(22T14)
+60a4 Cons(39T14)
+X 16 pila_acotada.ads
+2K9*pila_acotada 15|3w6 3r24 16|25e17
+6W19*PilaAcotada 15|18r19 20r39 16|23e22
+8Y13 PilaAniadir 15|30s12
+11Y13 PilaSacar 15|49s12
+X 17 system.ads
+67M9*Address
+X 26 s-memory.ads
+51V13*Alloc{17|67M9} 101i<c,__gnat_malloc>22
+66U14*Free 102i<c,__gnat_free>22
+74V13*Realloc{17|67M9} 103i<c,__gnat_realloc>22
+X 36 s-stausa.ads
+207U14*Initialize 208i<c,__gnat_stack_usage_initialize>22
+272U14*Output_Results 276i<c,__gnat_stack_usage_output_results>22
+X 38 s-stalib.adb
+87U14 Break_Start 88i<c,__gnat_break_start>22
+
