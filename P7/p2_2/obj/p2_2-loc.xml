@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Locations>
+  <Project>
+    <vfs_file />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 4/Practica ADA 4/src/p4.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 1/Pr#195;#161;ctica ADA 1/src/p1.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 1/Pr#195;#161;ctica ADA 1/src/pila_acotada.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 1/Pr#195;#161;ctica ADA 1/src/pila_acotada.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 2/Pr#195;#161;ctica ADA 2/p2_1/src/p2_1.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 2/Pr#195;#161;ctica ADA 2/p2_1/src/paquetebarrera.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/JoseMaria/Compartida/STR_ADA/Pr#195;#161;ctica ADA 2/Pr#195;#161;ctica ADA 2/p2_1/src/paquetebarrera.ads</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
