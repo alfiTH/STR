@@ -1,36 +1,40 @@
 with GNAT.IO; use GNAT.IO;
--- Añadir el paquete controlador
+-- Aï¿½adir el paquete controlador
+with controlador; use controlador;
 
 
 procedure p2_2 is
    procedure senial_capturada(capturadas: Natural; max_capturas: Positive) is begin
-      Put_line("Se han capturado" & integer'image(capturadas) & " señales SIGINT de" & integer'image(max_capturas));
+      Put_line("Se han capturado" & integer'image(capturadas) & " seï¿½ales SIGINT de" & integer'image(max_capturas));
    end senial_capturada;
 
-   -- Definir el tipo tarea EsperarCtrlC con un parámetro de tipo positive (tiene que ser mayor que 0) para indicar el número de señales esperadas
+   -- Definir el tipo tarea EsperarCtrlC con un parï¿½metro de tipo positive (tiene que ser mayor que 0) para indicar el nï¿½mero de seï¿½ales esperadas
+   task type EsperarCtrlC(numSeniales: positive);
+   -- Implementaciï¿½n el cuerpo del tipo tarea EsperarCtrlC
+   task body EsperarCtrlC is
+      -- Zona de declaraciï¿½n
 
-   -- Implementación el cuerpo del tipo tarea EsperarCtrlC
-   -- Zona de declaración
+      -- Declarar una variable de tipo Natural (puede contener valores mayores o iguales que 0) para contar el nï¿½mero de ocurrencias de la seï¿½al SIGINT e inicializarla a 0
+      coutSenial: Natural:=0;
+   begin
+      -- Zona de cï¿½digo
 
-      -- Declarar una variable de tipo Natural (puede contener valores mayores o iguales que 0) para contar el número de ocurrencias de la señal SIGINT e inicializarla a 0
-
-   -- Zona de código
-
-      -- Mientras no se hayan recibido las señales esperadas
-
-         -- Invocar a la entrada Wait de ControladorSigInt para esperar a que se pulse Ctrl+C
-
-         -- Incrementar las señales recibidas
-
-         -- Mostrar el mensaje "Se han capturado xxxx señales SIGINT de yyyy" siendo xxxx el número de señales capturadas e yyyy el número de señales esperadas (usar el procedimiento
-         -- senial_capturada)
-
-      -- Fin mientras
-
+            -- Mientras no se hayan recibido las seï¿½ales esperadas
+            while coutSenial<numSeniales loop
+               -- Invocar a la entrada Wait de ControladorSigInt para esperar a que se pulse Ctrl+C
+               ControladorSigInt.Wait;
+               -- Incrementar las seï¿½ales recibidas
+               coutSenial := coutSenial +1;
+               -- Mostrar el mensaje "Se han capturado xxxx seï¿½ales SIGINT de yyyy" siendo xxxx el nï¿½mero de seï¿½ales capturadas e yyyy el nï¿½mero de seï¿½ales esperadas (usar el procedimiento
+               -- senial_capturada)
+               senial_capturada(coutSenial, numSeniales);
+            -- Fin mientras
+            end loop;
    -- Fin del cuerpo del tipo tarea EsperarCtrlC
+   end EsperarCtrlC;
 
-   -- Crear una tarea de tipo EsperarCtrlC pasando por parámetros el número de señales SIGINT que debe recibir
-
+   -- Crear una tarea de tipo EsperarCtrlC pasando por parï¿½metros el nï¿½mero de seï¿½ales SIGINT que debe recibir
+   taskEspera : EsperarCtrlC (10 );
 begin
    null;
 end p2_2;

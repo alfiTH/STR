@@ -1,26 +1,28 @@
--- Añadir el paquete  de interrupciones de ADA
-
--- Añadir el paquete  de nombres de interrupciones de ADA
+-- Aï¿½adir el paquete  de interrupciones de ADA
+with Ada.Interrupts; use Ada.Interrupts;
+with Ada.Interrupts.Names; use Ada.Interrupts.Names;
+-- Aï¿½adir el paquete  de nombres de interrupciones de ADA
 
 
 -- Inicio del paquete controlador
-
-   -- Crear un objeto protegido de nombre ControladorSigInt (no pondremos el type, ya que queremos creal el objeto específico y no un tipo)
-
-      -- Definir un procedimiento Interrupcion sin parámetros
-
-      -- Definir una entrada Wait sin parámetros
-
-      -- Incluir el pragma Interrupt_Handler con Interrupcion como parámetro (indica que Interrupcion será un manejador de interrupción)
-
-      -- Incluir el pragma Attach_Handler con Interrupcion y Sigint como parámetros (indicará que Interrupcion manejará la señal Sigint)
-
-      -- Incluir el pragma Unreserve_All_Interrupts sin parámetros (necesario para que se puedan manejar las interrupciones)
-
+package controlador is 
+   -- Crear un objeto protegido de nombre ControladorSigInt (no pondremos el type, ya que queremos creal el objeto especï¿½fico y no un tipo)
+   protected ControladorSigInt is 
+      -- Definir un procedimiento Interrupcion sin parï¿½metros
+      procedure Interrupcion;
+      -- Definir una entrada Wait sin parï¿½metros
+      entry Wait;
+      -- Incluir el pragma Interrupt_Handler con Interrupcion como parï¿½metro (indica que Interrupcion serï¿½ un manejador de interrupciï¿½n)
+      pragma Interrupt_Handler(Interrupcion);
+      -- Incluir el pragma Attach_Handler con Interrupcion y Sigint como parï¿½metros (indicarï¿½ que Interrupcion manejarï¿½ la seï¿½al Sigint)
+      pragma Attach_Handler(Interrupcion, SIGINT);
+      -- Incluir el pragma Unreserve_All_Interrupts sin parï¿½metros (necesario para que se puedan manejar las interrupciones)
+      pragma Unreserve_All_Interrupts;
    -- Zona privada del objeto
-
-      -- Definir un atributo booleano e inicializarlo a falso para indicar si se ha producido la ocurrencia de la señal o no
-
+   private
+      -- Definir un atributo booleano e inicializarlo a falso para indicar si se ha producido la ocurrencia de la seï¿½al o no
+      senial : boolean := false;
    -- Fin del objeto ControladorSigInt
-
+   end ControladorSigInt;
 -- Fin del paquete controlador
+end controlador;

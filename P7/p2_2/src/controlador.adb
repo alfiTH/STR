@@ -1,14 +1,22 @@
 -- Inicio del cuerpo del paquete controlador
+package body controlador is
+   -- Implementaciï¿½n del cuerpo del objeto protegido ControladorSigInt
+   protected body ControladorSigInt is 
+      -- Implementaciï¿½n del procedimiento Interrupcion que lo ï¿½nico que hace es poner el atributo booleano a verdadero (este procedimiento se ejecutarï¿½ cuando ocurra la interrupciï¿½n)
+      procedure Interrupcion is
+         
+      begin
+         senial := true;
+      end Interrupcion;
 
-   -- Implementación del cuerpo del objeto protegido ControladorSigInt
-
-      -- Implementación del procedimiento Interrupcion que lo único que hace es poner el atributo booleano a verdadero (este procedimiento se ejecutará cuando ocurra la interrupción)
-
-
-      -- Implementación de la entrada Wait que esperará a que se produzca una ocurrencia (atributo booleano a verdadero) y lo único que hace es volver a ponerla a falso
-      -- para que el objeto pueda volver a capturar señales
-
+      -- Implementaciï¿½n de la entrada Wait que esperarï¿½ a que se produzca una ocurrencia (atributo booleano a verdadero) y lo ï¿½nico que hace es volver a ponerla a falso
+      -- para que el objeto pueda volver a capturar seï¿½ales
+      entry Wait when senial is 
+      begin
+         senial:=false;
+      end Wait;
 
    -- Fin del objeto protegido ControladorSigInt
-
+   end ControladorSigInt;
 -- Fin del cuerpo del paquete controlador
+end controlador;
