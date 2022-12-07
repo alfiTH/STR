@@ -86,12 +86,12 @@ void * TareaMostrarTiempos(void *data)
 	//Para i desde 0 hasta 100
 	for (int i = 0; i <100; i++)
 	{
-	//Imprimir "************************* x ms *************************\n" (usar ImprimirFranjaMS), siendo x=i*10 los milisegundos actuales
-	ImprimirFranjaMS(i*10);
-	if (clock_nanosleep (CLOCK_MONOTONIC, TIMER_ABSTIME, &siguiente, NULL)) pthread_exit((void*)-1);
-	//Incrementar el siguiente instante de repetición con el periodo
-	siguiente = SumaTimeSpec(siguiente, repeticion);
-	//Fin Para
+		//Imprimir "************************* x ms *************************\n" (usar ImprimirFranjaMS), siendo x=i*10 los milisegundos actuales
+		ImprimirFranjaMS(i*10);
+		if (clock_nanosleep (CLOCK_MONOTONIC, TIMER_ABSTIME, &siguiente, NULL)) pthread_exit((void*)-1);
+		//Incrementar el siguiente instante de repetición con el periodo
+		siguiente = SumaTimeSpec(siguiente, repeticion);
+		//Fin Para
 	}
 		
 
