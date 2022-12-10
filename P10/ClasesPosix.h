@@ -1,7 +1,35 @@
 //Incluir la librería de utilización de hilos posix
+#include "Identificador.h"
+#include "funciones_time.h"
 #include <pthread.h>
-#include <iostream>
 #include <vector>
+#include <iostream>
+
+
+class mutex_t {
+	private:
+		pthread_mutex_t* manMutex;// Este atributo será el manejador del mutex asociado a la clase
+		pthread_mutexattr_t* attrMutex;//Atributos del mutex
+		
+
+	public:
+		mutex_t();
+		~mutex_t();
+		int Inicializar();
+		int Lock();
+		int Unlock();
+		pthread_mutex_t* ObtenerManejador();
+		/*
+		************************************************************************************************
+		**************************** Nuevos métodos para la Prática Posix 5 ****************************
+		************************************************************************************************/
+		//Definir el método AsignarProtocolo que retorne un entero y reciba un entero para indicar el protocolo de prioridades dinámicas
+		int AsignarProtocolo(int protocolo);
+		//Definir el método AsignarTecho que retorne un entero y reciba un entero para indicar el techo de prioridad del mutex
+		int AsignarTecho(int  techo);
+		//Definir el método AsignarProtocoloYTecho que retorne un entero y reciba un entero para indicar el protocolo de prioridades dinámicas y otro entero para indicar el techo de prioridad del mutex
+		int AsignarProtocoloYTecho(int protocolo, int techo);
+};
 
 /*
 **********************************************************
@@ -87,30 +115,6 @@ class hilo_t {
 		mutex_t* ObtenerMutex(int mutex);
 };
 
-class mutex_t {
-	private:
-		pthread_mutex_t* manMutex;// Este atributo será el manejador del mutex asociado a la clase
-		pthread_mutexattr_t* attrMutex;//Atributos del mutex
-		
-
-	public:
-		mutex_t();
-		~mutex_t();
-		int Inicializar();
-		int Lock();
-		int Unlock();
-		pthread_mutex_t* ObtenerManejador();
-		/*
-		************************************************************************************************
-		**************************** Nuevos métodos para la Prática Posix 5 ****************************
-		************************************************************************************************/
-		//Definir el método AsignarProtocolo que retorne un entero y reciba un entero para indicar el protocolo de prioridades dinámicas
-		int AsignarProtocolo(int protocolo);
-		//Definir el método AsignarTecho que retorne un entero y reciba un entero para indicar el techo de prioridad del mutex
-		int AsignarTecho(int  techo);
-		//Definir el método AsignarProtocoloYTecho que retorne un entero y reciba un entero para indicar el protocolo de prioridades dinámicas y otro entero para indicar el techo de prioridad del mutex
-		int AsignarProtocoloYTecho(int protocolo, int techo);
-};
 
 /*
 **********************************************************

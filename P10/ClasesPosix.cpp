@@ -1,6 +1,6 @@
-#include <funciones_time.h>
-#include <ClasesPosix.h>
-#include "Identificador.h"
+
+#include "ClasesPosix.h"
+
 
 Identificador_t Identificador;
 
@@ -239,35 +239,39 @@ la lista de recursos y la lista de mutex pasados como últimos parámetros del m
 int hilo_t::EstablecerAtributos(int prioridad, int politica, int herencia, int periodo, int ejecucion, struct timespec instanteComienzo, std::vector<int> acciones, std::vector<int> recursos, std::vector<mutex_t*> mutexs){
 	/*Llamar al método EstablecerAtributos definido en la Práctica Posix 4 con la prioridad, la política, la herencia, el periodo de repetición, el tiempo de ejecución de la tarea
 	periódica y el tiempo de comienzo del hilo*/
-	this->EstablecerAtributos(prioridad, politica, herencia, periodo, ejecucion, instanteComienzo);
+	int ret = this->EstablecerAtributos(prioridad, politica, herencia, periodo, ejecucion, instanteComienzo);
 	/*Guardar el resto de los parámetros recibidos en los atributos correspondientes. La clase vector tiene definido el operador de asignación, por lo que se pueden hacer
 	asignaciones de vectores sin ningún problema*/
-	this.acciones = acciones;
-	this.recursos = recursos;
-	this.mutexs = mutexs;
+	this->acciones = acciones;
+	this->recursos = recursos;
+	this->mutexs = mutexs;
 //Fin del método EstablecerAtributos
+	return ret;
 }
 	
 
 //Implementar el método ObtenerNumAcciones. Esta función lo único que hace es devolver el tamaño del vector de la lista de acciones
 int hilo_t::ObtenerNumAcciones(){
-	return this.acciones.size();
+	return this->acciones.size();
 }
 
 //Implementar el método ObtenerAccion. Esta función lo único que hace es devolver el valor de la lista de acciones indicado por el parámetro de entrada
 int hilo_t::ObtenerAccion(int accion){
-	return this.acciones.at(accion);
+	return this->acciones.at(accion);
 }
 
 //Implementar el método ObtenerRecurso. Esta función lo único que hace es devolver el valor de la lista de recursos indicado por el parámetro de entrada
 int hilo_t::ObtenerRecurso(int recurso){
-	return this.recurso.at(recurso);
+	return this->recursos.at(recurso);
 }
 
 /*Implementar el método ObtenerMutex. Esta función lo único que hace es devolver el valor de la lista de mutex indicado por el parámetro de entrada. En caso de que el parámetro
 tenga un valor menor que cero o mayor o igual que el número de mutex, devolverá NULL*/
 mutex_t* hilo_t::ObtenerMutex(int mutex){
-	return this.mutexs.at(mutex);
+	if (mutex<0 or mutex>=mutexs.size())
+		return NULL;
+	else
+		return this->mutexs.at(mutex);
 }
 
 
@@ -349,27 +353,27 @@ pthread_mutex_t* mutex_t::ObtenerManejador()
 */
 
 //Implementar el método AsignarProtocolo que establezca el protocolo del mutex al valor indicado por el parámetro recibido
-int  AsignarProtocolo(int protocol){
+int  mutex_t::AsignarProtocolo(int protocol){
 	//Establecer el protocolo de los atributos de creación del mutex al valor indicado por el parámetro recibido (usar la función pthread_mutexattr_setprotocol)
-	pthread_mutexattr_setprotocol(this.attrMutex, protocol);
+	return pthread_mutexattr_setprotocol(this->attrMutex, protocol);
 //Fin del método AsignarProtocolo
 }
 
 /*Implementar el método AsignarTecho que establezca el techo de prioridad del mutex al valor indicado por los
 parámetros recibidos*/
-int AsignarTecho(int techo){
+int mutex_t::AsignarTecho(int techo){
 	//Establecer el techo de prioridad de los atributos de creación del mutex usando el valor del techo de prioridad recibido por parámetro
-	pthread_mutexattr_setprioceiling(this.attrMutex, techo);
+	return pthread_mutexattr_setprioceiling(this->attrMutex, techo);
 //Fin del método AsignarTecho
 }
 
 /*Implementar el método AsignarProtocoloYTecho con dos parámetros que establezca el protocolo y el techo de prioridad del mutex al valor indicado por los
 parámetros recibidos*/
-int AsignarProtocoloYTecho(int protocolo, int techo){
+int mutex_t::AsignarProtocoloYTecho(int protocolo, int techo){
 	//Llamar al método AsignarProtocolo pasándole el valor del protocolo recibido
-	AsignarProtocolo(protocolo);
+	int ret = AsignarProtocolo(protocolo);
 	//Llamar al método AsignarTecho pasándole el valor del techo de prioridad recibido
-	AsignarTecho(techo);
+	return ret + AsignarTecho(techo);
 //Fin del método AsignarProtocoloYTecho
 }
 /*

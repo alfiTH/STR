@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones_time.h"
-#include <ClasesPosix.h>
+#include "ClasesPosix.h"
 //Incluir librería de tiempos
 #include <time.h>
-#include <iostream>
-#include <vector>
+
 
 //La función Ejecutar mantiene la ejecución durante n milisegundos
 void Ejecutar(int n) {
@@ -103,7 +102,7 @@ void * TareaPeriodica(void *data)
 			/*Invocar a la función EjecutarRecurso con el mutex asociado al recurso que se va a ejecutar (método ObtenerMutex de la clase hilo_t), el valor del recurso i-ésimo
 			del hilo (método ObtenerRecurso de la clase hilo_t), la acción que se va a ejecutar (método ObtenerAccion de la clase hilo_t) y el identificador del hilo (método
 			ObtenerIdentificador de la clase hilo_t)*/
-			EjecutarRecurso(hilo.ObtenerMutex(i), hilo.ObtenerRecurso(i), hilo.ObtenerAccion(i), hilo.ObtenerIdentificador(i));
+			EjecutarRecurso(hilo.ObtenerMutex(hilo.ObtenerRecurso(i)), hilo.ObtenerRecurso(i), hilo.ObtenerAccion(i), hilo.ObtenerIdentificador());
 		//Fin para
 		}
 		//Imprimir el mensaje "Hilo id termina su acción periódica", siendo "id" el identificador del hilo (usar la función ImprimirFinal y el método ObtenerIdentificador de la clase hilo_t)
@@ -115,6 +114,7 @@ void * TareaPeriodica(void *data)
 	//Fin bucle
 	}
 //Fin tareaPeriodica
+return nullptr;
 };
 
 //Definir la función TareaMostrarTiempos que reciba un parámetro de tipo puntero a hilo_t (recordemos que el tipo de la función debe ser puntero a void y luego convertimos)
@@ -190,14 +190,13 @@ int main(int argc, char *argv[]) {
 *******************************************************************************************************************
 */
 	//Definir un vector de tipo puntero a mutex_t (usar la clase vector)
-	std::vector<mutex_t*>mutexs;
+	std::vector<mutex_t*> mutexs;
 	//Para cada recurso (la variable num_recursos indica cuántos recursos hay)
 	for (int i = 0; i <num_recursos; i++)
 	{
 		//Definir una variable de tupo puntero a mutex_t y reservarle memoria (hay que hacerlo dentro del bucle para que se cree un nuevo mutex para cada recurso)
-		mutex_t* mutex;
+		mutex_t *mutex = new mutex_t;
 		//Inicializar el mutex recién definido usando el techo de prioridad inmediato (PTHREAD_PRIO_PROTECT) y el techo de prioridad del recurso i-ésimo
-		
 		mutex->AsignarProtocoloYTecho(PTHREAD_PRIO_PROTECT, techos_prioridad[i]);
 		mutex->Inicializar();
 		//Añadir el mutex recién creado al vector de mutex (usar el método push_back de la clase vector)
@@ -205,7 +204,7 @@ int main(int argc, char *argv[]) {
 	//Fin para
 	}
 	//Definir un vector de tamaño num_tareas de tipo hilo_t (no usar la clase vector). Este vector permitirá manejar los hilos que ejecutarán las tareas periódicas.
-	hilos_t hilos[num_tareas];
+	hilo_t hilos[num_tareas];
 	//Definir una variable de tipo timespec para almacenar el instante de comienzo
 	struct timespec comienzo;
 	//Leer la hora actual y almacenarla en la variable anterior
@@ -257,7 +256,7 @@ int main(int argc, char *argv[]) {
 *******************************************************************************************************************
 */
 	//Para cada tarea (num_tareas indica cuántas tareas se van a ejecutar)
-	for (int i = 0; i < num_tareas; i++)
+	for (int i = 0; i < num_tareas; i++){
 		//Establecer en el hilo i-ésimo la función y el dato que va a utilizar usando como parámetros la función TareaPeriodica y el propio manejador del hilo i-ésimo
 		hilos[i].AsignarFuncionYDato(TareaPeriodica, &hilos[i]);
 		//Lanzar el hilo i-ésimo (método Lanzar de la clase hilo_t)
@@ -265,22 +264,22 @@ int main(int argc, char *argv[]) {
 	//Fin para
 	}
 	//Definir una variable de tipo hilo_t para manejar el hilo que mostrará las franjas de tiempo
-
+	hilo_t manejador;
 	/*Asignar al hilo que mostrará las franjas de tiempo la prioridad máxima para la política FIFO (usar la función sched_get_priority_max), la política FIFO (SCHED_FIFO),
 	la no herencia de atributos (PTHREAD_EXPLICIT_SCHED), el periodo (10), el tiempo de ejecución (0, no es necesario para este hilo pero hay que darle un valor)
 	y el instante de comienzo. Para ello, usar el método EstablecerAtributos de la clase hilo_t definido en la práctica 4*/
-
+	manejador.EstablecerAtributos(sched_get_priority_max(SCHED_FIFO), SCHED_FIFO, PTHREAD_EXPLICIT_SCHED, 10, 0, comienzo );
 	//Establecer en el hilo que mostrará las franjas de tiempo la función y el dato que va a utilizar usando como parámetros la función tareaMostrarTiempos y el propio manejador del hilo i-ésimo
-	
+	manejador.AsignarFuncionYDato(TareaMostrarTiempos, &manejador);
 	//Lanzar el hilo que mostrará las franjas de tiempo
-
+	manejador.Lanzar();
 	//Esperar únicamente por la finalización del hilo que mostrará las franjas de tiempo
-
+	manejador.Join();
 	//Como los mutex fueron definidos como punteros, debemos liberar la memoria de todos ellos. Para ello, ver las líneas siguientes
 	//Para cada mutex en el vector de mutex (el método size de la clase vector indica cuántos elementos hay en el vector)
-
+	for (int i = 0; i <mutexs.size(); i++)
 		//Liberar la memoria del mutex i-ésimo
-
+		delete mutexs.at(i) ;
 	//Fin para
 	
 /*
