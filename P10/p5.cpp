@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
 		/*Asignar al hilo i-ésimo la prioridad (P), la política FIFO (SCHED_FIFO), la no herencia de atributos (PTHREAD_EXPLICIT_SCHED), el periodo (T), el tiempo de ejecución (C),
 		el instante de comienzo particular de la tarea (se calcula como el instante de comienzo leído previamente más el tiempo de acceso (Ta) de la tarea; para realizar la suma, hay que convertir Ta a timespec),
 		la lista de acciones del hilo (Acciones), la lista de recursos del hilo (Recursos) y el vector de mutex. Para ello, usar el nuevo método EstablecerAtributos de la clase hilo_t*/
-		hilos[i].EstablecerAtributos(P, SCHED_FIFO, PTHREAD_EXPLICIT_SCHED, T, C, comienzo, Acciones, Recursos, mutexs);
+		hilos[i].EstablecerAtributos(P, SCHED_FIFO, PTHREAD_EXPLICIT_SCHED, T, C, SumaTimeSpec(comienzo, ms2timespec(Ta)), Acciones, Recursos, mutexs);
 /*
 *******************************************************************************************************************
 ****************************** Fin de zona de implementación de la Práctica Posix 5 *******************************
